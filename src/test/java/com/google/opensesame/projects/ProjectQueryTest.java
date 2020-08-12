@@ -21,9 +21,9 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import org.junit.Test;
 
 @RunWith(JUnit4.class)
 public class ProjectQueryTest {
@@ -48,7 +48,7 @@ public class ProjectQueryTest {
   }
 
   @Before
-  public void mockProjectSetUp() {
+  public void mockProjectSetUp() throws IOException {
     firstMockProject =
         new ProjectEntity(
             "273537467",

@@ -75,6 +75,8 @@ public class ProjectQuery {
     } else {
       // TODO(Richie): Add pagination support.
       // TODO(Richie): Add ordering support.
+      ProjectEntity.updateGitHubIndexes();
+
       List<QueryFilter> queryFilters = getQueryFiltersFromRequest(request);
       return getProjectEntitiesByQueryFilters(queryFilters);
     }

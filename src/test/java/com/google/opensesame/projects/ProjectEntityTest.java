@@ -35,7 +35,7 @@ public class ProjectEntityTest {
   }
 
   @Before
-  public void mockProjectSetUp() {
+  public void mockProjectSetUp() throws IOException {
     mockProject =
         new ProjectEntity(
             "273537467", Arrays.asList("Mentor 1", "Mentor 2", "Mentor 3"), Arrays.asList());
@@ -49,7 +49,7 @@ public class ProjectEntityTest {
   }
 
   @Test
-  public void fromExistingRepositoryIdShouldReturnExistingProject() {
+  public void fromExistingRepositoryIdShouldReturnExistingProject() throws IOException {
     // Expect the function to return an existing ProjectEntity from the Datastore because an entity
     // with the supplied ID already exists.
 
@@ -59,7 +59,7 @@ public class ProjectEntityTest {
   }
 
   @Test
-  public void fromNewRepositoryIdShouldReturnNewProject() {
+  public void fromNewRepositoryIdShouldReturnNewProject() throws IOException {
     // Expect the function to return a new ProjectEntity because no entity with that supplied ID
     // exists in the Datastore.
 

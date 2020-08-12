@@ -12,6 +12,8 @@ import org.kohsuke.github.GHMyself;
 import org.kohsuke.github.GHRepository;
 import org.kohsuke.github.GHUser;
 import org.kohsuke.github.GitHub;
+import org.kohsuke.github.PagedIterable;
+import org.kohsuke.github.GHRepository.Contributor;
 
 /**
  * MockGHObjects is a helper class with two main static functions to help mock the kohsuke GitHub
@@ -111,12 +113,19 @@ public class MockGHObjects {
    * @throws IOException
    */
   public static GHRepository createMockRepository() throws IOException {
+    @SuppressWarnings("unchecked")
+    PagedIterable<Contributor> mockRepositoryContributors =
+        (PagedIterable<Contributor>)mock(PagedIterable.class);
+    when(mockRepositoryContributors.toArray())
+        .thenReturn(new Contributor[] { new Contributor(), new Contributor(), new Contributor() });
+
     GHRepository mockGHRepository = mock(GHRepository.class);
     when(mockGHRepository.getDescription()).thenReturn(MOCK_DESCRIPTION);
     when(mockGHRepository.getLanguage()).thenReturn(MOCK_LANGUAGE);
     when(mockGHRepository.getName()).thenReturn(MOCK_GHREPO_NAME);
     when(mockGHRepository.listTopics()).thenReturn(MOCK_TOPICS);
     when(mockGHRepository.getId()).thenReturn(MOCK_ID);
+    when(mockGHRepository.listContributors()).thenReturn(mockRepositoryContributors);
     return mockGHRepository;
   }
 

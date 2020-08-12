@@ -31,6 +31,7 @@ public class ProjectData {
   private String readmeRawUrl = null;
   private String readmeHtmlUrl = null;
   private String gitHubUrl = null;
+  private Integer numContributors = null;
 
   /**
    * Create a ProjectData object from a ProjectEntity and its associated GitHub repository.
@@ -232,5 +233,13 @@ public class ProjectData {
     }
 
     return gitHubUrl;
+  }
+
+  public Integer getNumContributors() {
+    if (numContributors == null) {
+      numContributors = projectEntity.numContributors;
+    }
+
+    return numContributors;
   }
 }
